@@ -201,9 +201,8 @@ export default {
       });
     },
     navigateToSearch() {
-      this.$router.push({ path: `/search`, query: { string: this.searchQuery } }).catch(err => {
-        this.$router.push({ path: "/" });
-      });
+      const searchQuery = this.searchQuery.trim()
+      return searchQuery
     },
     navigateToAccount() {
       this.$router.push({ path: `/account` }).catch(err => {
