@@ -64,7 +64,6 @@ export const webhookChannelLocal = new WebhookAlertChannel('srebot-demo-webhook'
 }`,
 })
 
-
 export default defineConfig({
  projectName: 'Website Monitoring',
  logicalId: 'website-monitoring-1',
