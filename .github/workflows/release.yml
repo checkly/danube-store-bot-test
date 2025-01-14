@@ -28,6 +28,9 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: gh release create ${{ env.release_tag }} -p --target $GITHUB_SHA
 
+    - name: Install dependencies
+      run: npm install
+
     - run: npx checkly deploy --force --output
       env:
         CHECKLY_ACCOUNT_ID: ${{ secrets.CHECKLY_ACCOUNT_ID }}
