@@ -1,0 +1,29 @@
+name: release
+
+on:
+  push:
+    branches:
+    - master
+  workflow_dispatch:
+
+jobs:
+  mark-release:
+    if: ${{ github.ref == 'refs/heads/master' && github.event_name != 'workflow_dispatch' }}
+    environment:
+      name: "Production"
+    runs-on: ubuntu-latest
+    steps:
+    - run: echo "release_tag=$(date -u +%Y-%m-%d-%H.%M.%S)" >> $GITHUB_ENV
+      id: release_tag
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 20
+
+    - name: Set existing production deployment SHA to environment variable
+      run: echo "LAST_PROD_DEPLOYMENT_SHA=$(git describe --tags $(git rev-list --tags --max-count=1))" >> $GITHUB_ENV
+
+    - name: Create Release
+      env:
+        GH_REPO: ${{ github.repository }} # https://github.com/cli/cli/issues/3556
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: gh release create ${{ env.release_tag }} -p --target $GITHUB_SHA
