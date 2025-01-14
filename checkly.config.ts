@@ -2,12 +2,12 @@ import { defineConfig } from 'checkly'
 import { Frequency } from 'checkly/constructs'
 import { WebhookAlertChannel } from 'checkly/constructs'
 
-export const webhookChannel = new WebhookAlertChannel('webhook-239286', {
-  name: 'srebot-prod-webhook',
+export const webhookChannel = new WebhookAlertChannel('srebot-webhook', {
+  name: 'srebot-demo-webhook',
   method: 'POST',
-  url: new URL('https://srebot-zys7.onrender.com/checkly-webhook'),
-  sendRecovery: false,
-  sendFailure: false,
+  url: new URL('https://srebot-1.onrender.com/checkly-webhook'),
+  sendRecovery: true,
+  sendFailure: true,
   sendDegraded: false,
   sslExpiry: false,
   template: `{
@@ -33,12 +33,12 @@ export const webhookChannel = new WebhookAlertChannel('webhook-239286', {
 }`,
 })
 
-export const webhookChannellocal = new WebhookAlertChannel('webhook-2392868', {
+export const webhookChannelLocal = new WebhookAlertChannel('srebot-demo-webhook', {
   name: 'srebot-prod-webhook-local',
   method: 'POST',
-  url: new URL('https://cd97-62-96-56-52.ngrok-free.app/checkly-webhook'),
-  sendRecovery: false,
-  sendFailure: false,
+  url: new URL('https://8159-87-206-18-21.ngrok-free.app/checkly-webhook'),
+  sendRecovery: true,
+  sendFailure: true,
   sendDegraded: false,
   sslExpiry: false,
   template: `{
@@ -70,7 +70,10 @@ export default defineConfig({
  logicalId: 'website-monitoring-1',
  repoUrl: 'https://github.com/acme/website',
  checks: {
-  alertChannels: [webhookChannel, webhookChannellocal],
+  alertChannels: [
+    webhookChannel,
+    webhookChannelLocal,
+  ],
    activated: true,
    muted: false,
    runtimeId: '2022.10',
