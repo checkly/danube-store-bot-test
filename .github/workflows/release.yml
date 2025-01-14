@@ -27,3 +27,8 @@ jobs:
         GH_REPO: ${{ github.repository }} # https://github.com/cli/cli/issues/3556
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: gh release create ${{ env.release_tag }} -p --target $GITHUB_SHA
+
+    - run: npx checkly deploy --force --output
+      env:
+        CHECKLY_ACCOUNT_ID: ${{ secrets.CHECKLY_ACCOUNT_ID }}
+        CHECKLY_API_KEY: ${{ secrets.CHECKLY_API_KEY }}
