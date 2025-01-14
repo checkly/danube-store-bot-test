@@ -21,5 +21,4 @@ test('checkout', async ({ page }) => {
 	await checkoutPage.finalizeOrder();
 
 	expect(await checkoutPage.successMessageIsShown());
-
 });
