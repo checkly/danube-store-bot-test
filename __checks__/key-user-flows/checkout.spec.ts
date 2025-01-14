@@ -6,13 +6,14 @@ import { DanubeCheckoutPage } from './pages/checkout';
 import { registeredUser } from './data/users';
 
 test('checkout', async ({ page }) => {
-
 	await page.goto('https://danube-store-srebot-test-3a4a0227b89f.herokuapp.com');
 
 	const shopPage = new DanubeShopPage(page);
 	const itemDetailsPage = new DanubeItemDetailsPage(page);
 	const cartPage = new DanubeCartPage(page);
 	const checkoutPage = new DanubeCheckoutPage(page);
+
+
 
 	await shopPage.selectShopItem();
 	await itemDetailsPage.addToCart();
