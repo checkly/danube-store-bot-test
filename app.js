@@ -20,6 +20,7 @@ app.use(express.static(__dirname + "/vue/dist"));
 
 app.get("/api/books", (req, res) => {
 	if (fs.existsSync("downtime.json")) {
+		console.log('Downtime detected');
 		res.status(500).send();
 	} else {
 		const rawData = fs.readFileSync("books.json");
@@ -54,6 +55,11 @@ app.post("/api/toggle", (req, res) => {
 		fs.writeFileSync("downtime.json", "{}");
 		res.status(200).send();
 	}
+});
+
+app.get('/api/downtime', (req, res) => {
+	const downtime = fs.existsSync('downtime.json')
+	res.status(200).json({ downtime })
 });
 
 app.get(/.*/, (req, res) => {
