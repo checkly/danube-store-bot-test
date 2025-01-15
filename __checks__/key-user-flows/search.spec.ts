@@ -11,5 +11,5 @@ test('search', async ({page}) => {
 
     await shopPage.performSearch('For')
     await shopPage.selectShopItem()
-    expect(await itemDetailsPage.isActived())
+    expect(await itemDetailsPage.isActive())
 })
