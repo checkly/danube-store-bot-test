@@ -19,7 +19,7 @@ app.get("/404", (req, res) => {
 app.use(express.static(__dirname + "/vue/dist"));
 
 app.get("/api/books", (req, res) => {
-	if (fs.existsSynchronously("downtime.json")) {
+	if (fs.existsSync("downtime.json")) {
 		console.log('Downtime detected');
 		res.status(500).send();
 	} else {
