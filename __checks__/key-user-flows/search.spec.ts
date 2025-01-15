@@ -9,8 +9,7 @@ test('search', async ({page}) => {
     const shopPage = new DanubeShopPage(page);
     const itemDetailsPage = new DanubeItemDetailsPage(page);
 
-    await shopPage.performSearch('For')
+    await shopPage.performSearch('Not existing hehehe')
     await shopPage.selectShopItem()
     expect(await itemDetailsPage.isActive())
-
 })

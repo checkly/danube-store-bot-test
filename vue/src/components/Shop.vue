@@ -40,19 +40,20 @@ export default {
         response => {
           const path = this.$route.path
           const shopQuery = this.$route.query.string
+          console.log('Path', path, 'shopQuery', shopQuery)
 
           if (path.includes('search')) {
             response.data.forEach(element => {
               if (element.title.toUpperCase().includes(shopQuery.toUpperCase())
               || element.author.toUpperCase().includes(shopQuery.toUpperCase())) {
                   this.books.push(element)
-              }  
+              }
             })
           } else if (path.includes('category')) {
             response.data.forEach(element => {
               if (element.genre.toUpperCase().includes(shopQuery.toUpperCase())) {
                   this.books.push(element)
-              }  
+              }
             })
           } else {
             this.books = response.data;
