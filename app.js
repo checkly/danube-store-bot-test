@@ -36,7 +36,7 @@ app.get("/api/books/:id", (req, res) => {
 	var arrayFound = books.filter(function (item) {
 		return item.id === req.params.id;
 	});
-	res.status(200).json(arrayFound);
+	res.status(200).json(arrayFound[0]);
 });
 
 app.get("/api/users/login", (req, res) => {
