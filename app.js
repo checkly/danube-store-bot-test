@@ -34,9 +34,9 @@ app.get("/api/books/:id", (req, res) => {
 	const rawData = fs.readFileSync("books.json");
 	const books = JSON.parse(rawData);
 	var arrayFound = books.filter(function (item) {
-		return item.id == req.params.id;
+		return item.id === req.params.id;
 	});
-	res.status(200).json(arrayFound[0]);
+	res.status(200).json(arrayFound);
 });
 
 app.get("/api/users/login", (req, res) => {
