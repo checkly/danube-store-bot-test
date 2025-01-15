@@ -25,11 +25,7 @@ app.get("/api/books", (req, res) => {
 		const rawData = fs.readFileSync("books.json");
 		const books = JSON.parse(rawData);
 
-		if (books[0].name !== "Lord of the Rings") {
-			res.status(500).send();
-		} else {
-			res.status(200).json(books);
-		}
+        res.status(200).json(books);
 	}
 });
 
