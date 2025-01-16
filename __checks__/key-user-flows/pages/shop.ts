@@ -36,7 +36,7 @@ export class DanubeShopPage {
 
 	async performLogin(user) {
 		await this.buttonLogin.click();
-		await this.fieldLoginEmail.fill(user.username);
+		await this.fieldLoginEmail.fill(user.email);
 		await this.fieldLoginPassword.fill(user.password);
 		await this.buttonLoginProceed.click();
 	}
