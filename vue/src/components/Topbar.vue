@@ -44,7 +44,7 @@
               </div>
               <div style="margin-top: 42px"></div>
               <div class="button-set">
-                <button id="goto-signin-btn" click="signIn">Sign In</button>
+                <button id="goto-signin-btn" @clikc="signIn">Sign In</button>
               </div>
             </div>
           </div>
