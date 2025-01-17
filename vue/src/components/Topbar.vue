@@ -27,7 +27,7 @@
                 <input
                   id="n-email"
                   class="textfield-modal"
-                  v-model="username"
+                  v-model="email"
                   type="text"
                   placeholder="Email"
                 />
@@ -44,7 +44,7 @@
               </div>
               <div style="margin-top: 42px"></div>
               <div class="button-set">
-                <button id="goto-signin-btn" @click="signIn">Sign In</button>
+                <button id="goto-signin-btn" click="signIn">Sign In</button>
               </div>
             </div>
           </div>
