@@ -27,7 +27,7 @@
                 <input
                   id="n-email"
                   class="textfield-modal"
-                  v-model="email"
+                  v-model="username"
                   type="text"
                   placeholder="Email"
                 />
@@ -171,7 +171,7 @@ export default {
         this.error = 'Please fill in all fields.'
         return
       }
-      
+
       if ((this.email === 'user@email.com') && (this.password === 'supersecure1')) {
         this.loggedIn = true;
         this.$modal.hide("modal-login");
