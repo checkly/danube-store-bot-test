@@ -1,2 +1,2 @@
 web: npm start
-release: npm install && cd vue && npm install && npm run build
+release: npm install && cd vue && npm install --include=dev && npm run build
