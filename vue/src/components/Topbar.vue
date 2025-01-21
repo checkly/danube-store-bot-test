@@ -167,8 +167,7 @@ export default {
     signIn() {
       this.error = ''
 
-      const fieldsMissing = this.email || !this.password
-      if (fieldsMissing) {
+      if (!this.email || !this.password) {
         this.error = 'Please fill in all fields.'
         return
       }
