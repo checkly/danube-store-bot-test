@@ -27,7 +27,7 @@
                 <input
                   id="n-email"
                   class="textfield-modal"
-                  v-model="email"
+                  v-model="username"
                   type="text"
                   placeholder="Email"
                 />
