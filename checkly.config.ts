@@ -1,5 +1,5 @@
 import { defineConfig } from 'checkly'
-import { Frequency } from 'checkly/constructs'
+import { Frequency, RetryStrategyBuilder } from 'checkly/constructs'
 import { WebhookAlertChannel } from 'checkly/constructs'
 
 export const webhookChannel = new WebhookAlertChannel('srebot-webhook', {
@@ -84,6 +84,7 @@ export default defineConfig({
    browserChecks: {
      frequency: Frequency.EVERY_10M,
      testMatch: '**/__checks__/**/*.spec.ts',
+     retryStrategy: RetryStrategyBuilder.noRetries(),
    },
  },
  cli: {
