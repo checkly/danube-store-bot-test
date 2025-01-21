@@ -9,5 +9,5 @@ test('login', async ({ page }) => {
 	const shopPage = new DanubeShopPage(page);
 
 	await shopPage.performLogin(registeredUser);
-	expect(await shopPage.isPastLogin());
+	expect(await shopPage.loginMessage).toBeVisible();
 });
