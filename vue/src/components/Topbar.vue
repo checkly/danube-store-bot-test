@@ -163,8 +163,10 @@ export default {
   methods: {
     show() {
       this.$modal.show("modal-login");
+      console.log('hello world')
     },
     signIn() {
+      console.log('Sign IN attempt', this.email, this.password)
       this.error = ''
 
       if (!this.email || !this.password) {
