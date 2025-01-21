@@ -7,7 +7,7 @@ export class DanubeItemDetailsPage {
 
 	constructor(page: Page) {
 		this.page = page;
-		this.addToCartButton = page.locator('text=add to cart');
+		this.addToCartButton = page.locator('text="add to cart"');
 		this.detailsContainer = page.locator('.detail')
 	}
 
