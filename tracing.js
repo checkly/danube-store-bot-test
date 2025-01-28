@@ -7,11 +7,13 @@ const {
   getNodeAutoInstrumentations,
 } = require('@opentelemetry/auto-instrumentations-node')
 
+const shouldEnableTracing = process.env.OTEL_URL && process.env.OTEL_TOKEN
+
 const exporter = new OTLPTraceExporter({
   timeoutMillis: 2000,
   url: process.env.OTEL_URL,
   headers: {
-   Authorization: process.env.OTEL_TOKEN
+    Authorization: process.env.OTEL_TOKEN,
   },
 })
 
@@ -41,14 +43,17 @@ const sdk = new NodeSDK({
     },
   })],
 })
-sdk.start()
 
-process.on("SIGTERM", () => {
-  sdk
+if (shouldEnableTracing) {
+  sdk.start()
+
+  process.on('SIGTERM', () => {
+    sdk
       .shutdown()
       .then(
-          () => console.log("SDK shut down successfully"),
-          (err) => console.log("Error shutting down SDK", err)
+        () => console.log('SDK shut down successfully'),
+        (err) => console.log('Error shutting down SDK', err),
       )
-      .finally(() => process.exit(0));
-});
+      .finally(() => process.exit(0))
+  })
+}
